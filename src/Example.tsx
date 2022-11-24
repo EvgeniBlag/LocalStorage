@@ -27,11 +27,16 @@ export const Example = () => {
         setValue(0)
       }
 
+      
+    const removeItemLocalStorage = () => {
+        localStorage.removeItem('counterValue +1')
+      }
+
     return ( 
 
         <div className="Wrapper">
 
-        <h1 style={{color:"red"}}>{value}</h1>
+        <h1 style={{color:"white"}}>{value}</h1>
 
         <div>
         <button onClick={incHandler} className="Button1">inc</button>
@@ -41,6 +46,8 @@ export const Example = () => {
         <button onClick={ getToLocalStorage} className="Button3">get</button>
 
         <button onClick={clearLocalStorage} className="Button4">clear</button>
+
+        <button onClick={removeItemLocalStorage} className="Button5">removeItem</button>
         </div>
        
     </div>
