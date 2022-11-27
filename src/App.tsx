@@ -9,8 +9,8 @@ function App() {
 
         <Example/>
        
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+        <p style={{color:'red'}}>
+          Edit <code>src/App.tsx</code> Contador en localStorage
         </p>
        
       </header>
