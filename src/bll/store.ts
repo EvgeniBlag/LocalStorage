@@ -7,7 +7,13 @@ const rootReduser = combineReducers({
     counter: counterReduser
 })
 
-export const store = legacy_createStore(rootReduser,applyMiddleware(thunk))
+let preloadedState;
+const persistedTodosString = localStorage.getItem('app-state')
+if (persistedTodosString){
+    preloadedState = JSON.parse(persistedTodosString)
+}
+
+export const store = legacy_createStore(rootReduser,preloadedState,applyMiddleware(thunk))
 export type AppRootStateType = ReturnType<typeof rootReduser>
 export type AppStoreType = typeof store
 
