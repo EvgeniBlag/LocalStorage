@@ -1,26 +1,21 @@
 import React, { useEffect, useState } from "react";
 import './App.css';
+import { AppRootStateType } from "./bll/store";
+import {useDispatch, useSelector} from 'react-redux'
+import { incValueAC } from "./bll/counter-reduser";
+
 
 export const Example = () => {
 
-    const [value,setValue]= useState (()=>{
-        let valueString = localStorage.getItem("counterValue")
-        if (valueString) {
-          let newValue = JSON.parse(valueString)
-        return newValue
-        }
-    })
+    const value = useSelector<AppRootStateType, number> (state => state.counter.value)
+    const dispatch = useDispatch()
 
-   useEffect (()=>{
-        localStorage.setItem('counterValue',JSON.stringify(value))
-   },[value])
+ 
+    const incHandler = () => {
+        dispatch(incValueAC())
+    }
 
-   
-   const incHandler = () => {
-    setValue ( value + 1 )
-}
-      
-
+  
 
     return ( 
 
@@ -29,7 +24,7 @@ export const Example = () => {
         <h1 style={{color:"white"}}>{value}</h1>
 
         <div>
-        <button onClick={incHandler} className="Button1">inc</button>
+        <button onClick={incHandler}  className="Button1">inc</button>
         </div>
        
     </div>
